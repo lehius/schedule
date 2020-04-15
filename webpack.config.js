@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
+const webpack = require('webpack')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -93,6 +94,9 @@ const plugins = () => {
     ]),
     new MiniCssExtractPlugin({
       filename: filename('css')
+    }),
+    new webpack.ProvidePlugin({
+      '_': 'lodash'
     })
   ]
   if (isProd) {
@@ -131,10 +135,6 @@ module.exports = {
         use: cssLoaders()
       },
       {
-        test: /\.less$/,
-        use: cssLoaders('less-loader')
-      },
-      {
         test: /\.s[ac]ss$/,
         use: cssLoaders('sass-loader')
       },
@@ -147,10 +147,6 @@ module.exports = {
         use: ['file-loader']
       },
       {
-        test: /\.xml$/,
-        use: ['xml-loader']
-      },
-      {
         test: /\.csv$/,
         use: ['csv-loader']
       },
@@ -158,14 +154,6 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: js_loaders()
-      },
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babel_options(['@babel/preset-typescript'])
-        }
       }
     ]
   }
