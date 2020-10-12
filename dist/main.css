@@ -1,0 +1,115 @@
+html {
+  font-size: 15px; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: black; }
+  body #file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1; }
+  body #label,
+  body #download {
+    position: absolute;
+    top: 1px;
+    width: 180px;
+    height: 50px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    font: 1.2rem/3rem Tahoma;
+    transition: all 0.18s ease-in-out;
+    color: transparent;
+    background: transparent;
+    border: none;
+    text-decoration: none; }
+  body #label {
+    right: 0; }
+  body #download {
+    right: 185px; }
+  body #label:hover,
+  body #download:hover {
+    color: white;
+    background: #333;
+    visibility: visible;
+    border: 1px solid #333; }
+  body #label:active,
+  body #download:active {
+    background: #222;
+    border: 1px solid #222; }
+  body #download:focus {
+    outline: transparent auto 0; }
+
+.table-bordered {
+  width: 100%;
+  height: 100%; }
+
+.table-bordered,
+.table-bordered thead tr th,
+.table-bordered tbody tr td {
+  border: 1px solid #000;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  background-color: #1F2445;
+  color: #fff;
+  margin: 0; }
+
+thead {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  background-color: #27201a;
+  color: white; }
+
+.table-bordered .title-days th {
+  background: #1c2045;
+  color: #fff; }
+
+.table-bordered thead tr th {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+  .table-bordered thead tr th .title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    display: -webkit-flex;
+    -webkit-justify-content: space-around;
+    -webkit-align-items: center;
+    font-weight: bold;
+    background: #27201a;
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #fff; }
+    .table-bordered thead tr th .title span .currentTime h1,
+    .table-bordered thead tr th .title span .currentDate h1 {
+      font-weight: bold; }
+
+.table-striped > tbody tr {
+  transition: all 0.18s ease-in-out; }
+
+.table-striped > tbody tr.hidden {
+  display: none; }
+
+.table-striped > tbody tr:nth-of-type(odd) > td {
+  background-color: #454C80;
+  font-weight: bold;
+  color: #fff; }
+
+.table-striped > tbody tr > td:nth-child(1) {
+  font-family: invitro-bold;
+  color: #fff;
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 5px; }
+
+
+/*# sourceMappingURL=main.css.map*/

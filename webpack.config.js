@@ -27,7 +27,12 @@ const optimization = () => {
   return config
 }
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const filename = ext => {
+  if (ext === '.js') {
+    ext = 'js'
+  }
+  return isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+}
 
 const cssLoaders = extra => {
   const loaders = [
@@ -90,6 +95,10 @@ const plugins = () => {
       {
         from: path.resolve(__dirname, './src/favicon.ico'),
         to: path.resolve(__dirname, 'dist/')
+      },
+      {
+        from: path.resolve(__dirname, './src/assets/data.csv'),
+        to: path.resolve(__dirname, 'dist/')
       }
     ]),
     new MiniCssExtractPlugin({
@@ -108,8 +117,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
-    main: ['@babel/polyfill', './index.js'],
-    analytics: './analytics.ts'
+    main: ['@babel/polyfill', './index.js']
   },
   output: {
     filename: filename('.js'),
@@ -145,10 +153,6 @@ module.exports = {
       {
         test: /\.(ttf|woff|woff2|eot)$/,
         use: ['file-loader']
-      },
-      {
-        test: /\.csv$/,
-        use: ['csv-loader']
       },
       {
         test: /\.js$/,
